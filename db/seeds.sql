@@ -1,6 +1,6 @@
-INSERT INTO `burgers_db`.`burgers` (
-	`burger_name`,
-	`devoured`,
-	`date`,
-	);
-VALUES ('Cheeseburger', '0', '1/23/2017'), ('Hamburger', '0', '1/23/2017'), ('Pizza Burger', '0', '1/23/2017');
+--run source seeds.sql
+
+USE burgers_db;
+INSERT INTO burgers (burger_name, devoured, date) VALUES ('cheeseburger', 0, CURRENT_TIMESTAMP);
+INSERT INTO burgers (burger_name, devoured, date) VALUES ('hamburger', 0, CURRENT_TIMESTAMP); 
+INSERT INTO burgers (burger_name, devoured, date) VALUES ('Pizza Burger', 0, CURRENT_TIMESTAMP);
