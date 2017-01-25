@@ -3,18 +3,24 @@ var connection = require('./connection.js');
 
 /*=================Methods to Execute MySQL Commands=============================*/
 
-function selectAll(){
-connection.query('SELECT * FROM burgers', function(err, rows, fields) {
+module.exports = {
+	rick: "hello",
+	selectAll: function(){
+	connection.query('SELECT * FROM burgers', function(err, rows, fields) {
   	if (err) throw err;
  
   	console.log(rows);
 	});
-}//End selectAll()
+	},
+	insertOne: function(){
+		connection.query('INSERT INTO burgers (burger_name, devoured, date) VALUES (?, 0, 2017-01-24', [preq.params.id], function(err, result){
+			if(err) throw err;
+			console.log(results);
 
-function insertOne(){
+		});
+	}}/*,
 
-}//End insertOne()
+	updateOne(){
 
-function updateOne(){
+	}*/
 
-}//end updateOne()
