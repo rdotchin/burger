@@ -1,9 +1,9 @@
 /*=======================Connect Node to MySQL==============================*/
 //require mysql npm package
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 //create connection to burgers_db set to variable named connection
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   			host     : 'localhost',
   			user     : 'root',
   			password : '',
@@ -11,7 +11,12 @@ var connection = mysql.createConnection({
 	});
 
 //establish a connection
-/*connection.connect();*/
+connection.connect(function(err){
+	if(err){
+		console.log('error connection: ' + err.stack)
+	}
+	console.log('connected to mysql as id ' + connection.threadId);
+});
 /*====================END Connect Node to MySQL==============================*/
 
 //export the mysql connection variable to be used in orm.js

@@ -1,15 +1,30 @@
 var express = require('express');
-var app = express();
-var path = require('path')
-require('./../models/burger.js');
-var PORT = process.env.PORT || 8080;
-
-//router
-app.get('/index', function(req, res){
-	res.sendFile(path.join(__dirname + './../views/index.handlebars'));
-})
+var router = express.Router();
+/*var path = require('path')*/
+var burger = require('./../models/burger.js');
 
 
-module.exports = app.listen(PORT, function(){
-	console.log("listening on PORT http://localhost:" + PORT);
+
+/*===========================EXPRESS ROUTES====================================*/
+router.get('/', function(req, res){
+	res.redirect('/index');
 });
+
+router.get('/index', function(req, res){
+	burger.all(function(data){
+		var hbsObject = { burgers: data };
+		console.log(hbsObject);
+		res.render('index', hbsObject);
+	})
+});
+
+router.post(function(req, res){
+
+	})
+router.put(function(req, res){
+
+	})
+
+
+
+module.exports = router;

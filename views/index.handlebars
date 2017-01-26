@@ -1,34 +1,48 @@
-<img src="./../../public/assets/img/burger.png">
+<div class="container">
 
-<h1>Eat-Da-Burger</h1>
+	<h1>Eat-Da-Burger</h1>
+	<div class="row">
+		<div class="col-md-12">
+			<img src="/assets/img/burger.png">
+		</div>
+	</div>
+	{{!-- list of uneaten burgers --}}
+	<div class="row" id="burgers-div">
+		<div class="col-md-4" id="burgers">
+			<ul>
+				{{#each burgers}}
+					<li>
+						<p>
+							{{this.id}}. {{this.burger_name}}
 
-<ul>
-	{{#each burgers}}
-		<li>
-			<p>
-				{{this.id}}, {{this.burger_name}}
+							<form action="/{{this.id}}?_method=PUT" method="POST" class="button-size">
+								<button type="submit">Devour It!</button>
+							</form>
+						</p>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	
+		<div class="col-md-4" id="eaten-burgers">
+			<ul>
+				{{#each eatenBurgers}}
+					<li>
+						<p>
+							{{this.id}}. {{this.burger_name}}
+						</p>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	
+	<div class="row">
+		<div class="col-md-12" id="burger-text-area">
+			<form method="POST" action="/" class="button-size">
+				<textarea type="text" name="newBurger" placeholder="enter new burger here"></textarea>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
 
-				<form action="/{{this.id}}?_method=PUT" method="POST" class="button-size">
-					<button type="submit">Devour It!</button>
-				</form>
-			</p>
-		</li>
-	{{/each}}
-</ul>
-
-<ul>
-	{{#each eatenBurgers}}
-		<li>
-			<p>
-				{{this.id}}, {{this.burger_name}}
-			</p>
-		</li>
-	{{/each}}
-</ul>
-
-<form method="POST" action="/" class="button-size">
-	<input type="text" name="id" placeholder="id">
-	<textarea type="text" name="newBurger" placeholder="enter new burger here"></textarea>
-	<button type="submit">Submit</button>
-</form>
-
+</div> {{!-- end of container div --}}
