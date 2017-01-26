@@ -10,22 +10,22 @@ var orm = {
 		var queryString = 'SELECT * FROM ' + table;
 		connection.query(queryString, function(err, result){
 			if (err) throw err;
-			/*console.log("selectAll()\n");
-			console.log(result);*/
  			cb(result);
 		});	
 	},
 	//vals is an array of values that we want to save to cols
 	//cols are the columns we want to insert the values into
 	/*'INSERT INTO burgers (burger_name, devoured, date) VALUES (?, 0, 2017-01-24'*/
-	insertOne: function(table, cols, burgerName, cb){
-		var queryString = 'INSERT INTO' + table;
-		queryString += ' (' + cols.toString() + ')';
+	insertOne: function(table, cols, vals, cb){
+		var queryString = 'INSERT INTO ' + table;
+		queryString += ' (' + cols.toString(' ') + ')';
 		queryString += ' VALUES (?, 0, CURRENT_TIMESTAMP)';
 		console.log("queryString " + queryString);
 		//takes the  
-		connection.query(queryString, burgerName, function(err, result){
+		connection.query(queryString, vals, function(err, result){
 			if(err) throw err;
+			console.log("insertOne()\n");
+			console.log(result);
 			cb(result);
 		});
 	}
