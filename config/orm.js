@@ -1,6 +1,15 @@
 //Import (require) the mysql connection from connection.js
 const connection = require('./connection.js');
 
+function objtoSql(ob){
+	var arr = [];
+	for(var key in ob){
+		if(ob.hasOwnProperty(key)){
+			arr.push(key + '=' + ob[key]);
+		}
+	}
+	return arr.toString();
+}
 
 /*=================Methods to Execute MySQL Commands=============================*/
 //exported to burgers.js
@@ -28,13 +37,24 @@ var orm = {
 			console.log(result);
 			cb(result);
 		});
-	}
+	},
 
-	/*updateOne: function(table, col, condition, cb){
+	/*UPDATE `burgers_db`.`burgers` SET `devoured`='1' WHERE `id`='4'*/
+	updateOne: function(table, objColVals, condition, cb){
 		var queryString = 'UPDATE ' + table;
-		queryString += ' SET '
 
-	}*/
+		queryString += ' SET ';
+		queryString += objtoSql(objColVals);
+		queryString += condition;
+		console.log(queryString);
+
+		connection.query(queryString, function(err, result){
+			if(err) throw err;
+			console.log("updateOne()\n");
+			console.log(result);
+			cb(result);
+		});
+	}
 };
 
 module.exports = orm;
