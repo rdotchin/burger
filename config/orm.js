@@ -29,12 +29,12 @@ var orm = {
 		var queryString = 'INSERT INTO ' + table;
 		queryString += ' (' + cols.toString(' ') + ')';
 		queryString += ' VALUES (?, 0, CURRENT_TIMESTAMP)';
-		console.log("queryString " + queryString);
+		/*console.log("queryString " + queryString);*/
 		//takes the  
 		connection.query(queryString, vals, function(err, result){
 			if(err) throw err;
-			console.log("insertOne()\n");
-			console.log(result);
+			/*console.log("insertOne()\n");
+			console.log(result);*/
 			cb(result);
 		});
 	},
@@ -46,16 +46,19 @@ var orm = {
 		queryString += ' SET ';
 		queryString += objtoSql(objColVals);
 		queryString += condition;
-		console.log(queryString);
+		/*console.log(queryString);*/
 
 		connection.query(queryString, function(err, result){
 			if(err) throw err;
-			console.log("updateOne()\n");
-			console.log(result);
+			/*console.log("updateOne()\n");
+			console.log(result);*/
 			cb(result);
 		});
 	}
 };
 
+/*=================END Methods to Execute MySQL Commands=============================*/
+
+//export orm object to be required in burgers.js
 module.exports = orm;
 

@@ -29,8 +29,9 @@ router.post('/index/create', function(req, res){
 
 /*UPDATE burgers SET devoured=1 WHERE id = 1*/
 router.put('/index/update/:id', function(req, res){
+	//req.params.id coming from form action="index/update/{{this.id}}?_method=PUT" method="POST">
 	var condition = ' WHERE id = ' + req.params.id;
-	//devoured=value of input devour
+	//req.body.devour coming from <input name="devour" value="1">
 	burger.update({devoured: req.body.devour}, condition, function(){
 		console.log('Burger ' + req.params.id + ' updated!');
 		res.redirect('/index');
