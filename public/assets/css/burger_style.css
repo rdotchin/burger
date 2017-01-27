@@ -13,6 +13,7 @@ h1 {
 }
 
 #burger-image {
+	padding-top: 20px;
 	width: 200px;
 	display: block;
 	margin: auto;

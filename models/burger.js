@@ -8,8 +8,6 @@ var orm = require('./../config/orm.js');
 var burger = {
 	all: function(cb){
 		orm.selectAll('burgers', function(res){
-			/*console.log("all()\n");
-			console.log(res);*/
 			cb(res);
 		})
 	},
@@ -26,12 +24,12 @@ var burger = {
 		})
 	}
 }
+/*=====================END MODEL FOR HOW TO INTERFACE WITH THE DATABASE========================*/
 
 
 
 
 
 
-
-//export file
+//export burger object to be required in burgers_controller.js
 module.exports = burger;

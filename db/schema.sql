@@ -1,5 +1,5 @@
 
---run source schema.sql in terminal
+--source schema.sql in terminal
 
 CREATE DATABASE burgers_db;
 USE burgers_db;

@@ -1,5 +1,5 @@
 //Import (require) the mysql connection from connection.js
-const connection = require('./connection.js');
+var connection = require('./connection.js');
 
 function objtoSql(ob){
 	var arr = [];
@@ -24,7 +24,7 @@ var orm = {
 	},
 	//vals is an array of values that we want to save to cols
 	//cols are the columns we want to insert the values into
-	/*'INSERT INTO burgers (burger_name, devoured, date) VALUES (?, 0, 2017-01-24'*/
+	/*'INSERT INTO burgers (burger_name, devoured, date) VALUES (?, 0, 2017-01-24')*/
 	insertOne: function(table, cols, vals, cb){
 		var queryString = 'INSERT INTO ' + table;
 		queryString += ' (' + cols.toString(' ') + ')';
