@@ -3,7 +3,7 @@ var exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 
 // Serve static content for the app from the "public" directory in the application directory.
